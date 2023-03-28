@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dört İşlem Oyunu</title>
+    <style>
+#oyun{
+    width: 400px;
+    height: 200px;
+    padding: 18px;
+    margin:auto;
+    text-align: center;
+    background-color: mediumpurple;
+}
+h1{
+    border: solid 2px #fff;
+    padding: 5px;
+    font-weight: 400;
+    margin: 0 0 18px 0;
+}
+span{
+    font-size: 125%;
+    padding: 12px;
+}
+#result{
+    width: 90px;
+    height: 25px;
+}
+#answer{
+    margin-top: 10px;
+    padding: 5px;
+    border: none;
+    width: 90px;
+    background-color: rgb(240, 6, 248);
+    border: solid 2px #fff;
+    color: #fff;
+}
+#answer:hover{
+    background-color: chartreuse;
+}
+#True, #False {
+font-size: 150%;
+margin-top: 40px;
+padding: 10px;
+display:inline-block;
+}
+#True{
+    background-color: rgb(79, 248, 79);
+}
+#False{
+    background-color: rgb(239, 71, 71);
+}
+
+
+    </style>
+</head>
+<body>
+  <div id= "oyun">  
+<h1>Dört İşlem Oyunu</h1>
+<span id="number1">0</span>
+<span id="operator">+</span>
+<span id="number2">0</span>
+<span>=</span>
+<input type="text" id="result">
+<input type="button" id="answer" value="Cevapla"> <br>
+<div style="clear:both"></div>
+<div id="True">0</div> 
+<div id="False">0</div>
+<div style="clear:both"></div>
+
+  </div>   
+
+<script>
+var number1,number2,operator,result,answer,True=0,False=0;
+
+number1=document.getElementById('number1');
+number2=document.getElementById('number2');
+operator=document.getElementById('operator');
+result=document.getElementById('result');
+answer=document.getElementById('answer');
+True=document.getElementById('True');
+False=document.getElementById('False');
+
+//random  sayı uretme fonsiyonu
+function randomnumber(min,max){
+var number= Math.floor(Math.random()*(max-min))+min;
+return number;
+}
+
+//yeni soru oluşturma fonksiyonu
+function newquestion() {
+var operation=["+","-","/","*"];
+operator.textContent=operation[randomnumber(0,4)];
+number1.textContent=[randomnumber(0,50)];
+number2.textContent=[randomnumber(0,50)];
+
+    if (operator.textContent=="/"){
+        while(true) {
+            number2.textContent=[randomnumber(0.50)];
+            if(number1.textContent%number2.textContent ==0) {
+                break;
+            }
+        }
+    }
+}
+
+
+//sayfa yenilendiginde yeni soru fonksiyonu calışsın
+window.onload=function(){
+    newquestion();
+}
+
+
+answer.onclick=function(){
+var ans,n1,n2;
+n1=number(number1.textContent);
+n2=number(number2.textContent);
+switch(operator.textContent){
+    case '+': ans=n1+n2;break;
+    case '-': ans=n1-n2;break;
+    case '/': ans=n1/n2;break;
+    case '*': ans=n1*n2;break;
+    default :           break;
+}
+if(result.value==ans) {
+    True.textContent=number(True.textContent)+1;
+}
+else {
+    False.textContent=number(False.textContent)+1;
+}
+newquestion();
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

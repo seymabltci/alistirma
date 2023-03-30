@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randevu Formu</title>
+</head>
+<body>
+    <h2>Randevu Formu</h2>
+    <h6>Lütfen Aşağıdaki Formu Eksiksiz Doldurunuz.!</h6>
+
+    <input name="randevu" type="text" id="adsoyad" placeholder="Adınız/Soyadınız"> <br><br>
+    <input name="randevu" type="text" id="eposta" placeholder="e-posta Adresiniz"> <br><br>
+    <input name="randevu" type="text" id="telefon" placeholder="Telefon Numaranız"> <br><br>
+    <input name="randevu" type="date" id="tarih" placeholder="gg.aa.yyyy"> <br><br>
+    <input name="randevu" type="time" id="saat" placeholder="--:--"> <br><br> 
+    <input type="button" value="Randevu Oluştur" onclick="deneme()">
+
+    <script>
+        function deneme(){
+          var  datee= document.getElementsByName('randevu');
+            var massage="", i;
+            for(i=0;i<datee.length;i++){
+                massage+=datee[i].innerHTML;
+            }
+            alert(massage);
+            
+    
+            }
+            
+        </script>
+
+</body>
+</html>
